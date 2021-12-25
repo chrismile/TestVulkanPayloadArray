@@ -66,8 +66,10 @@ void vulkanErrorCallback() {
 MainApp::MainApp() {
     sgl::AppSettings::get()->getVulkanInstance()->setDebugCallback(&vulkanErrorCallback);
 
+    camera->setPosition(glm::vec3(0.0f, 0.0f, 1.5f));
     camera->setNearClipDistance(0.01f);
     camera->setFarClipDistance(100.0f);
+    MOVE_SPEED = 0.8f;
 
     useLinearRGB = false;
     transferFunctionWindow.setClearColor(clearColor);
