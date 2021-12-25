@@ -76,6 +76,8 @@ MainApp::MainApp() {
 
     rayTracingRenderPass = std::make_shared<RayTracingRenderPass>(rendererVk);
 
+    resolutionChanged(sgl::EventPtr());
+
     if (!recording && !usePerformanceMeasurementMode) {
         // Just for convenience...
         int desktopWidth = 0;
@@ -87,8 +89,6 @@ MainApp::MainApp() {
             window->setWindowSize(2186, 1358);
         }
     }
-
-    resolutionChanged(sgl::EventPtr());
 }
 
 MainApp::~MainApp() {
