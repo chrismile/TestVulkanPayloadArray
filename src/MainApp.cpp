@@ -28,7 +28,6 @@
 
 #include <algorithm>
 #include <memory>
-#include <GL/glew.h>
 
 #include <Utils/Timer.hpp>
 #include <Utils/AppSettings.hpp>
