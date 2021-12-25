@@ -22,10 +22,10 @@ The following NVIDIA driver versions were tested with an NVIDIA RTX 3090 graphic
 Different statements in the first hit shader in Data/Shaders/TestRayTracing.glsl that should be equivalent may produce
 either a red (correct) or blue (incorrect) triangle.
 
-![Correct](/home/christoph/Programming/C++/TestVulkanPayloadArray/screenshots/incorrect.png)
+![Correct](screenshots/incorrect.png)
 Figure 1. The incorrect result.
 
-![Correct](/home/christoph/Programming/C++/TestVulkanPayloadArray/screenshots/correct.png)
+![Correct](screenshots/correct.png)
 Figure 2. The correct result.
 
 ## Shader code
