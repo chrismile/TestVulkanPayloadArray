@@ -103,7 +103,7 @@ void main() {
     vec4 newColor = vec4(1.0, 0.0, 0.0, 1.0);
     for (int i = 0; i < 1; i++) {
         // Doesn't work.
-        swap(newColor, payload.colors[0]);
+        swap(newColor, payload.colors[i]);
 
         // Works.
         //swap(newColor, payload.colors[0]);
