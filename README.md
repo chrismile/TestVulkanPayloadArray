@@ -14,6 +14,11 @@ dependencies.
 
 When started, the program should show a red triangle on a green background. However, a blue triangle is rendered.
 
+The following NVIDIA driver versions were tested with an NVIDIA RTX 3090 graphics card:
+- Driver Windows: 497.29
+- Driver Linux/Ubuntu: 470.86
+
+
 Different statements in the first hit shader in Data/Shaders/TestRayTracing.glsl that should be equivalent may produce
 either a red (correct) or blue (incorrect) triangle.
 

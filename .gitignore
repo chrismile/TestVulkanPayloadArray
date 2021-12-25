@@ -86,3 +86,11 @@ Data/TransferFunctions/*
 
 Data/ControlPoints.txt
 imgui.ini
+
+# Build script
+Shipping/*
+.build/*
+.build_*
+third_party/*
+dependencies/*
+vcpkg_installed/*

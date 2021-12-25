@@ -37,9 +37,10 @@ endif()
 
 cmake_policy(SET CMP0012 NEW)
 find_package(sgl REQUIRED)
+find_package(Boost COMPONENTS system REQUIRED)
 find_package(Vulkan REQUIRED)
-target_link_libraries(TestVulkanPayloadArray PRIVATE sgl)
-include_directories(${sgl_INCLUDES})
+target_link_libraries(TestVulkanPayloadArray PUBLIC sgl ${Boost_LIBRARIES})
+include_directories(${sgl_INCLUDES} ${Boost_INCLUDE_DIR})
 
 if (${CMAKE_VERSION} VERSION_GREATER_EQUAL "3.21.0")
     target_link_libraries(TestVulkanPayloadArray PRIVATE Vulkan::Headers)

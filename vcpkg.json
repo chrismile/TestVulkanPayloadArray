@@ -3,6 +3,11 @@
     "name": "linevis",
     "version": "0.1.0-dev",
     "dependencies": [
+        "boost-core",
+        {
+            "name": "boost-interprocess",
+            "platform": "windows"
+        },
         {
             "name": "sdl2",
             "features": [ "vulkan" ]
