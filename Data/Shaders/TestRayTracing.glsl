@@ -13,7 +13,7 @@ layout(binding = 1, rgba8) uniform image2D outputImage;
 layout(binding = 2) uniform accelerationStructureEXT topLevelAS;
 
 struct RayPayload {
-    vec4 colors[1];
+    vec4 colors[2];
 };
 layout(location = 0) rayPayloadEXT RayPayload payload;
 
@@ -24,7 +24,7 @@ void main() {
     vec3 rayTarget = (camera.inverseProjectionMatrix * vec4(fragNdc.xy, 1.0, 1.0)).xyz;
     vec3 rayDirection = (camera.inverseViewMatrix * vec4(normalize(rayTarget.xyz), 0.0)).xyz;
 
-    for (int i = 0; i < 1; i++) {
+    for (int i = 0; i < 2; i++) {
         payload.colors[i] = vec4(0.0, 0.0, 1.0, 1.0);
     }
 
@@ -42,7 +42,7 @@ void main() {
 #extension GL_EXT_ray_tracing : require
 
 struct RayPayload {
-    vec4 colors[1];
+    vec4 colors[2];
 };
 layout(location = 0) rayPayloadInEXT RayPayload payload;
 
@@ -56,7 +56,7 @@ void main() {
 #extension GL_EXT_ray_tracing : require
 
 struct RayPayload {
-    vec4 colors[1];
+    vec4 colors[2];
 };
 layout(location = 0) rayPayloadInEXT RayPayload payload;
 
