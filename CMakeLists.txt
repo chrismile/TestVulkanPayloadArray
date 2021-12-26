@@ -19,6 +19,10 @@ else()
 	add_executable(TestVulkanPayloadArray ${SOURCES})
 endif()
 
+if(MSVC)
+    target_compile_options(TestVulkanPayloadArray PRIVATE "/MP")
+endif()
+
 set(FPHSA_NAME_MISMATCHED TRUE)
 if(VCPKG_TOOLCHAIN)
 	find_package(SDL2 CONFIG REQUIRED)
