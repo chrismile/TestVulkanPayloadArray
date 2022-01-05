@@ -28,6 +28,9 @@
 
 #include <memory>
 #include <glm/vec3.hpp>
+
+#include <Utils/StringUtils.hpp>
+#include <Graphics/Vulkan/Utils/Device.hpp>
 #include <Graphics/Vulkan/Buffers/Framebuffer.hpp>
 #include <Graphics/Vulkan/Render/RayTracingPipeline.hpp>
 #include <Graphics/Vulkan/Render/Renderer.hpp>
@@ -81,8 +84,14 @@ void RayTracingRenderPass::setupGeometryBuffers() {
 }
 
 void RayTracingRenderPass::loadShader() {
-    shaderStages = sgl::vk::ShaderManager->getShaderStages(
-            {"TestRayTracing.RayGen", "TestRayTracing.Miss", "TestRayTracing.ClosestHit"});
+    bool isNvidiaGtxGpu = sgl::startsWith(device->getDeviceName(), "NVIDIA GeForce GTX");
+    if (isNvidiaGtxGpu) {
+        shaderStages = sgl::vk::ShaderManager->getShaderStages(
+                {"TestRayTracingGTX.RayGen", "TestRayTracingGTX.Miss", "TestRayTracingGTX.ClosestHit"});
+    } else {
+        shaderStages = sgl::vk::ShaderManager->getShaderStages(
+                {"TestRayTracing.RayGen", "TestRayTracing.Miss", "TestRayTracing.ClosestHit"});
+    }
 }
 
 void RayTracingRenderPass::createRayTracingData(

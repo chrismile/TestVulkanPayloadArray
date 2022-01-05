@@ -19,6 +19,17 @@ else()
 	add_executable(TestVulkanPayloadArray ${SOURCES})
 endif()
 
+# Hide console window in release build on Windows/MSVC.
+# See: https://gitlab.kitware.com/cmake/community/-/wikis/doc/cmake/recipe/VSConfigSpecificSettings
+if(MSVC)
+	set_target_properties(TestVulkanPayloadArray PROPERTIES LINK_FLAGS_DEBUG "/SUBSYSTEM:CONSOLE")
+	set_target_properties(TestVulkanPayloadArray PROPERTIES COMPILE_DEFINITIONS_DEBUG "_CONSOLE")
+	set_target_properties(TestVulkanPayloadArray PROPERTIES LINK_FLAGS_RELWITHDEBINFO "/SUBSYSTEM:CONSOLE")
+	set_target_properties(TestVulkanPayloadArray PROPERTIES COMPILE_DEFINITIONS_RELWITHDEBINFO "_CONSOLE")
+	set_target_properties(TestVulkanPayloadArray PROPERTIES LINK_FLAGS_RELEASE "/SUBSYSTEM:WINDOWS")
+	set_target_properties(TestVulkanPayloadArray PROPERTIES LINK_FLAGS_MINSIZEREL "/SUBSYSTEM:WINDOWS")
+endif()
+
 if(MSVC)
     target_compile_options(TestVulkanPayloadArray PRIVATE "/MP")
 endif()
