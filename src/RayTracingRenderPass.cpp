@@ -84,14 +84,8 @@ void RayTracingRenderPass::setupGeometryBuffers() {
 }
 
 void RayTracingRenderPass::loadShader() {
-    bool isNvidiaGtxGpu = sgl::startsWith(device->getDeviceName(), "NVIDIA GeForce GTX");
-    if (isNvidiaGtxGpu) {
-        shaderStages = sgl::vk::ShaderManager->getShaderStages(
-                {"TestRayTracingGTX.RayGen", "TestRayTracingGTX.Miss", "TestRayTracingGTX.ClosestHit"});
-    } else {
-        shaderStages = sgl::vk::ShaderManager->getShaderStages(
-                {"TestRayTracing.RayGen", "TestRayTracing.Miss", "TestRayTracing.ClosestHit"});
-    }
+    shaderStages = sgl::vk::ShaderManager->getShaderStages(
+            {"TestRayTracing.RayGen", "TestRayTracing.Miss", "TestRayTracing.ClosestHit"});
 }
 
 void RayTracingRenderPass::createRayTracingData(
